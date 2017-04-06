@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'votes#show'
+  root 'suggestions#show'
 end
