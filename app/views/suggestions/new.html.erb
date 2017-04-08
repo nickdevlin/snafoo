@@ -1,0 +1,21 @@
+<form method="post" action="/stations">
+  <label>Select an existing suggestion:</label>
+  <select name="origin">
+    <% @snacks.each do |snack| %>
+      <option><%= snack["name"] %></option>
+    <% end %>
+  </select>
+  <input type="submit">
+</form>
+
+OR:
+
+<%= form_tag do %>
+  <%= text_field :new_snack, "Name" %>
+  <%= text_field :new_snack, "Location" %>
+  <%= submit_tag("Add snack") %>
+<% end %>
+
+<form method="post" action="https://api-snacks.nerderylabs.com/v1/snacks?ApiKey=7a29a6d3-7d09-47d9-af3d-072ea9159080">
+
+</form>
