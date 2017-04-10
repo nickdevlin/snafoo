@@ -14,8 +14,8 @@ OR:
   <%= label :new_snack, "Name" %>
   <%= text_field :new_snack, "Name" %><br>
   <%= label :new_snack, "Location" %>
-  <%= text_field :new_snack, "Location" %><br>
-  <%= submit_tag("Add snack") %>
+  <%= text_field :new_snack, "Location", required: true %><br>
+  <%= submit_tag("Suggest") %>
 <% end %>
 
 <form method="post" action="https://api-snacks.nerderylabs.com/v1/snacks?ApiKey=7a29a6d3-7d09-47d9-af3d-072ea9159080">
