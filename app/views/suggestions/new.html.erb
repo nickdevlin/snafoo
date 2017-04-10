@@ -1,18 +1,20 @@
 <form method="post" action="/stations">
-  <label>Select an existing suggestion:</label>
+  <label>Select an existing suggestion:</label><br>
   <select name="origin">
-    <% @snacks.each do |snack| %>
+    <% @suggested_snacks.each do |snack| %>
       <option><%= snack["name"] %></option>
     <% end %>
   </select>
   <input type="submit">
 </form>
-
+<br>
 OR:
-
+<br><br>
 <%= form_tag do %>
-  <%= text_field :new_snack, "Name" %>
-  <%= text_field :new_snack, "Location" %>
+  <%= label :new_snack, "Name" %>
+  <%= text_field :new_snack, "Name" %><br>
+  <%= label :new_snack, "Location" %>
+  <%= text_field :new_snack, "Location" %><br>
   <%= submit_tag("Add snack") %>
 <% end %>
 

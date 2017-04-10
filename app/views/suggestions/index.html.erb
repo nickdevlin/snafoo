@@ -4,11 +4,9 @@
   <tr>
     <th>Old Standbys</th>
   </tr>
-  <% @snacks.each do |snack| %>
+  <% @classic_snacks.each do |snack| %>
   <tr>
-    <% if snack["id"] < 1007 %>
-      <td><%= snack["name"] %></td>
-    <% end %>
+    <td><%= snack["name"] %></td>
   </tr>
   <% end %>
 </table>
@@ -17,19 +15,18 @@
   <tr>
     <th>Suggestion</th>
     <th>Last Purchased</th>
-    <th>Vote</th>
+    <th>Vote Count</th>
+    <th>Vote Button</th>
   </tr>
-  <% @snacks.each do |snack| %>
+  <% @suggested_snacks.each do |snack| %>
   <tr>
-    <% if snack["id"] > 1006 %>
-      <td><%= snack["name"] %></td>
-      <% if snack["lastPurchaseDate"] %>
-        <td><%= snack["lastPurchaseDate"] %></td>
-      <% else %>
-        <td>Never purchased</td>
-      <% end %>
-      <td>No votes yet</td>
+    <td><%= snack["name"] %></td>
+    <% if snack["lastPurchaseDate"] %>
+      <td><%= snack["lastPurchaseDate"] %></td>
+    <% else %>
+      <td>Never purchased</td>
     <% end %>
+    <td>No votes yet</td>
   </tr>
   <% end %>
 </table>
