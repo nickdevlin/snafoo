@@ -1,5 +1,17 @@
 <h1>SNAFOO</h1>
 
+<% if cookies[:votes].to_i >= 3 %>
+  <h2>You have no votes left! Try again next month!</h2>
+<% elsif cookies[:vote_count] %>
+  <h2>Votes remaining: <%= 3 - cookies[:vote_count].to_i %></h2>
+<% else %>
+  <h2>Votes remaining: 3</h2>
+<% end %>
+
+<% if cookies[:vote_error] %>
+  <h2><%= cookies[:vote_error] %></h2>
+<% end %>
+
 <table>
   <tr>
     <th>Old Standbys</th>
@@ -10,13 +22,15 @@
   </tr>
   <% end %>
 </table>
+
 <br>
+
 <table>
   <tr>
     <th>Suggestion</th>
     <th>Last Purchased</th>
     <th>Vote Count</th>
-    <th>Vote Button</th>
+    <th></th>
   </tr>
   <% @suggested_snacks.each do |snack| %>
   <tr>
@@ -26,9 +40,12 @@
     <% else %>
       <td>Never purchased</td>
     <% end %>
-    <td>No votes yet</td>
+    <td><%= @votes.where(snack_id: snack["id"]).count %></td>
+    <td><%= button_to "Vote for this snack", { controller: "votes", action: "create", snack_id: snack["id"] } %></td>
   </tr>
   <% end %>
 </table>
+
 <br>
+
 <%= link_to "Want to suggest a snack?", new_path %>
