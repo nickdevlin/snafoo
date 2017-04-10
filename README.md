@@ -1,3 +1,3 @@
 # SnaFoo
 
-Full info to come...
+It doesn't look like much, but it'll get the job done.
