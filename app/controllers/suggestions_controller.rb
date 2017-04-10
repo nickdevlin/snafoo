@@ -7,12 +7,22 @@ class SuggestionsController < ApplicationController
   end
 
   def new
-    retrieve_suggested_snacks
+    if cookies[:suggestion_made]
+      render :fourohfour
+    else
+      retrieve_suggested_snacks
+    end
   end
 
   def create
-    add_new_snack(params[:new_snack]["Name"], params[:new_snack]["Location"])
-    redirect_to root_path
+    if check_for_duplicate(params[:new_snack]["Name"]) #checks for duplicate
+      cookies[:suggestion_error] = "That's already been suggested. Come up with something more original."
+      render :new
+    else
+      add_new_snack(params[:new_snack]["Name"], params[:new_snack]["Location"])
+      cookies[:suggestion_made] = true
+      redirect_to root_path
+    end
   end
 
 end

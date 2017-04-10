@@ -1,15 +1,11 @@
 <h1>SNAFOO</h1>
 
-<% if cookies[:votes].to_i >= 3 %>
+<% if session[:preferred_snacks] && session[:preferred_snacks].length >= 3 %>
   <h2>You have no votes left! Try again next month!</h2>
-<% elsif cookies[:vote_count] %>
-  <h2>Votes remaining: <%= 3 - cookies[:vote_count].to_i %></h2>
+<% elsif session[:preferred_snacks] %>
+  <h2>Votes remaining: <%= 3 - session[:preferred_snacks].length %></h2>
 <% else %>
   <h2>Votes remaining: 3</h2>
-<% end %>
-
-<% if cookies[:vote_error] %>
-  <h2><%= cookies[:vote_error] %></h2>
 <% end %>
 
 <table>
@@ -24,6 +20,10 @@
 </table>
 
 <br>
+
+<% if cookies[:vote_error] %>
+  <h3><%= cookies[:vote_error] %></h2>
+<% end %>
 
 <table>
   <tr>
