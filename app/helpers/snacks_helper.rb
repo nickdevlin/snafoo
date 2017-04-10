@@ -31,6 +31,18 @@ module SnacksHelper
     added_snack = JSON.parse(new_snack)
   end
 
+  #checks to see if snack is already in database
+  def check_for_duplicate(snack_name)
+    retrieve_all_snacks
+    @classic_snacks.each do |snack|
+      return true if snack["name"] == snack_name
+    end
+    @suggested_snacks.each do |snack|
+      return true if snack["name"] == snack_name
+    end
+    return false
+  end
+
 
 
 

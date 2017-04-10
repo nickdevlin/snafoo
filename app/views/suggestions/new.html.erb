@@ -9,10 +9,15 @@
 </form>
 <br>
 OR:
+
+<% if cookies[:suggestion_error] %>
+  <h3><%= cookies[:suggestion_error] %></h3>
+<% end %>
+
 <br><br>
 <%= form_tag do %>
   <%= label :new_snack, "Name" %>
-  <%= text_field :new_snack, "Name" %><br>
+  <%= text_field :new_snack, "Name", required: true, unique: true %><br>
   <%= label :new_snack, "Location" %>
   <%= text_field :new_snack, "Location", required: true %><br>
   <%= submit_tag("Suggest") %>

@@ -2,24 +2,17 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(snack_id: params["snack_id"].to_i)
-    cookies[:vote_count] ||= 0
-    if cookies[:vote_count].to_i >= 3 #determines whether vote count has been exceeded
-      cookies[:vote_error] = "PLEASE READ ABOVE LINE MORE CLOSELY"
-    #remaining cases determine the cookie in which the snack must be store
-    elsif cookies[:vote2]
-      @vote.save
-      cookies[:vote3] = params["snack_id"]
-      cookies[:vote_count] = cookies[:vote_count].to_i + 1
-    elsif cookies[:vote1]
-      @vote.save
-      cookies[:vote2] = params["snack_id"]
-      cookies[:vote_count] = cookies[:vote_count].to_i + 1
+    session[:preferred_snacks] ||= []
+    if session[:preferred_snacks].length >= 3 #determines whether voter can still vote
+      cookies[:vote_error] = "Please refer to the top of the page." #throws error if not
+    elsif session[:preferred_snacks].include? params["snack_id"]
+      cookies[:vote_error] = "You already voted for that snack, dingus!" #throws error if snack has already been voted for
     else
       @vote.save
-      cookies[:vote1] = params["snack_id"]
+      cookies.delete(:vote_error) #resets error cookie for clean page
+      session[:preferred_snacks] << params["snack_id"]
       cookies[:vote_count] = cookies[:vote_count].to_i + 1
     end
-    p @vote_error
     redirect_to root_path
   end
 

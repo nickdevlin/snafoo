@@ -6,3 +6,7 @@ table, th, td {
 body {
   padding: 10px;
 }
+
+h3 {
+  color: red;
+}
