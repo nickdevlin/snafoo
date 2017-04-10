@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'suggestions#show'
+  root 'suggestions#index'
+  get 'new', to: 'suggestions#new'
+  post 'new', to: 'suggestions#create'
 end
