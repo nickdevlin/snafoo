@@ -7,7 +7,7 @@ class SuggestionsController < ApplicationController
   end
 
   def new
-    if cookies[:suggestion_made]
+    if cookies[:suggestion_made] #sends user to error page if a suggestion has already been made
       render :fourohfour
     else
       retrieve_suggested_snacks
