@@ -17,7 +17,7 @@ The web service could be altered to store an office location. That way, the only
 
 ### How could security be improved within the app?
 
-This could both be accomplished with the addition of user authentication with a gem like BCrypt or Devise. An employee could sign up for an account, using a unique identifier like an employee ID number for verification, then have the ability to log in from other devices and locations and also have the security and comfort that their votes wouldn't be stolen by a nefarious coworker. 
+The addition of user authentication, with a gem like BCrypt or Devise, would allow an employee could sign up for an account, using a unique identifier like an employee ID number for verification, then have the ability to log in from other devices and locations. Also, employees would get the security and comfort that their votes wouldn't be stolen by a nefarious coworker. 
 
 ### What could be done to allow employees to use any device while keeping the rules intact for voting and suggestions?
 
